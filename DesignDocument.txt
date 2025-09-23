@@ -1,0 +1,26 @@
+this is a "Zimbo" food-ordering-app kinda similar to Swiggy.
+our App Design contains the following components:        
+
+Components Design:
+AppLayout
+1) Header
+    - Logo
+    - Navitems
+
+2) Body
+    - Search bar
+    - RestaurantsContainer
+        - RestaurantCard
+            -Img
+            -Name of Res, Rating, Cuisine, delivery time
+
+3) Footer 
+    - copyright
+    - links
+    - address
+    - contact
+
+
+
+
+Technologies used: Reactjs, parcel
