@@ -34,7 +34,7 @@
 .res-card {
   width: 200px;
   padding: 10px;
-  margin: 25px 10px;
+  margin: 10px 15px;
 
   border: 1px solid white;
 }
@@ -44,4 +44,5 @@
 }
 .res-logo {
   width: 100%;
+  height: 200px;
 }
