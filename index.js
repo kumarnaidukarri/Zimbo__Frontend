@@ -44,7 +44,9 @@ const Header = function () {
   );
 };
 
-const RestaurantCard = function () {
+const RestaurantCard = function (props) {
+  const { resName, cuisine, rating } = props;
+
   return (
     <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
       <img
@@ -52,10 +54,9 @@ const RestaurantCard = function () {
         src="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/3/17/6a4369e1-0c9c-49f9-8132-5be682a7831f_1046503.jpg"
         alt="res img"
       />
-      <h3> Guma Gumalu Foods </h3>
-      <h4> Biryani, North Indian, Asian </h4>
-      <h4> 4.5 stars</h4>
-      <h4> 38 minutes</h4>
+      <h3> {resName} </h3>
+      <h4> {cuisine} </h4>
+      <h4> {rating} stars </h4>
     </div>
   );
 };
@@ -65,16 +66,13 @@ const Body = function () {
     <div className="body">
       <div className="search">Search</div>
       <div className="res-container">
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
-        <RestaurantCard />
+        <RestaurantCard resName="Ambica Foods" cuisine="Indian" rating="4.5" />
+        <RestaurantCard resName="Sai Ram Parlour" cuisine="Indian" rating="4" />
+        <RestaurantCard
+          resName="Mayuri Restaurant"
+          cuisine="American"
+          rating="4"
+        />
       </div>
     </div>
   );
