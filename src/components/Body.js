@@ -1,72 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-/*
-Components Design:
-AppLayout
-1) Header
-    - Logo
-    - Navitems
-
-2) Body
-    - Search bar
-    - RestaurantsContainer
-        - RestaurantCard
-            -Img
-            -Name of Res, Rating, Cuisine, delivery time
-
-3) Footer 
-    - copyright
-    - links
-    - address
-    - contact
-*/
-
-const Header = function () {
-  return (
-    <div className="header">
-      <div className="logo-container">
-        <img
-          className="logo"
-          src="https://png.pngtree.com/png-vector/20220708/ourmid/pngtree-fast-food-logo-png-image_5763171.png"
-          alt="food logo"
-        />
-      </div>
-      <div className="nav-items">
-        <ul>
-          <li>Home</li>
-          <li>About Us</li>
-          <li>Contact Us</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const RestaurantCard = function (props) {
-  const { resData } = props;
-  const { name, cuisines, avgRating, costForTwo, cloudinaryImageId, sla } =
-    resData?.info;
-
-  return (
-    <div className="res-card" style={{ backgroundColor: "#f0f0f0" }}>
-      <img
-        className="res-logo"
-        src={
-          "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
-          cloudinaryImageId
-        }
-        alt="res img"
-      />
-      <h3> {name} </h3>
-      <h4> {cuisines.join(", ")} </h4>
-      <h4> {avgRating || 0} stars </h4>
-      <h4> {sla.deliveryTime} mins </h4>
-      <h4> {costForTwo} </h4>
-    </div>
-  );
-};
+import RestaurantCard from "./RestaurantCard.js";
 
 // Swiggy API data
 /*
@@ -817,14 +749,4 @@ const Body = function () {
   );
 };
 
-const AppLayout = function () {
-  return (
-    <div className="app">
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const rootEl = ReactDOM.createRoot(document.getElementById("root"));
-rootEl.render(<AppLayout />);
+export default Body;
