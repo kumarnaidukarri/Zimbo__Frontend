@@ -22,5 +22,8 @@ AppLayout
 
 
 
+Features -
+Filtering Cards by ratings and Re-rendering using Hooks(useState)
+
 
 Technologies used: Reactjs, parcel

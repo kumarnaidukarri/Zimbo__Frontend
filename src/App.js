@@ -4,7 +4,6 @@ import ReactDOM from "react-dom/client";
 // components imports
 import Header from "./components/Header.js";
 import Body from "./components/Body.js";
-import RestaurantCard from "./components/RestaurantCard.js";
 
 /*
 Components Design:

@@ -1,13 +1,16 @@
 // mockData.js file contains Hard-coded data.
 
-// Swiggy API data
-/*
+/* Swiggy Dummy Data
    APIurl = https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.99740&lng=79.00110&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING
    restuarantsArr =  [{info:{}}, {info:{}}, ...]
    {name, id, cuisines, areaName, avgRating, costForTwo, cloudinaryImageId}  =  restuarantsArr[0].info
    imageUrl =  https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/  +  cloudinaryImageId
 */
-// Dummy Data
+
+/* Swiggy LIVE API Data
+   url = "https://swiggy-api-4c740.web.app/swiggy-api.json"
+*/
+
 const resList = [
   {
     "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
