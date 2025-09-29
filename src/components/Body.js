@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 
 import RestaurantCard from "./RestaurantCard.js";
+import Shimmer from "./Shimmer.js";
 
 const Body = function () {
   // useState() creates a local State variable
@@ -28,9 +29,9 @@ const Body = function () {
     setListOfRestaurants(newListOfRestaurants);
   };
 
-  // Loading Spinner
+  // Shimmer UI
   if (listOfRestaurants.length === 0) {
-    return <h1> Loading ... </h1>;
+    return <Shimmer />;
   }
 
   return (
