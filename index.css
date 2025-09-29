@@ -65,3 +65,9 @@
   margin: 20px;
   background-color: #f0f0f0;
 }
+
+/* login btn */
+.login-btn {
+  padding: 0 20px;
+  cursor: pointer;
+}
