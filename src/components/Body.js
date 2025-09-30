@@ -4,10 +4,9 @@ import RestaurantCard from "./RestaurantCard.js";
 import Shimmer from "./Shimmer.js";
 
 const Body = function () {
-  // useState() creates a local State variable
-  const [listOfRestaurants, setListOfRestaurants] = useState([]); //initial empty resList
+  const [listOfRestaurants, setListOfRestaurants] = useState([]); // local State variable for restaurants-list
 
-  const [searchText, setSearchText] = useState(""); // local state variable for search-input-box
+  const [searchText, setSearchText] = useState(""); // local State variable for search-input-box
 
   // useEffect() calls callback, when component is rendered.
   useEffect(() => {
@@ -53,8 +52,14 @@ const Body = function () {
             className="search-btn"
             onClick={() => {
               // Filter the restaurant cards and update UI
-              // search text
               console.log(searchText);
+              const filteredRestaurants = listOfRestaurants.filter(
+                (restaurant) => {
+                  // "Pizza Hut".includes("Pizza")
+                  return restaurant.info.name.includes(searchText);
+                }
+              );
+              setListOfRestaurants(filteredRestaurants);
             }}
           >
             {" "}
