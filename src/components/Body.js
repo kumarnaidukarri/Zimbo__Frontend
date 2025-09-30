@@ -7,6 +7,8 @@ const Body = function () {
   // useState() creates a local State variable
   const [listOfRestaurants, setListOfRestaurants] = useState([]); //initial empty resList
 
+  const [searchText, setSearchText] = useState(""); // local state variable for search-input-box
+
   // useEffect() calls callback, when component is rendered.
   useEffect(() => {
     console.log("Use effect called");
@@ -37,6 +39,28 @@ const Body = function () {
   return (
     <div className="body">
       <div className="filter">
+        <div className="search">
+          <input
+            type="text"
+            value={searchText}
+            onChange={(e) => {
+              console.log(e.target.value);
+              setSearchText(e.target.value);
+            }}
+            className="search-box"
+          />
+          <button
+            className="search-btn"
+            onClick={() => {
+              // Filter the restaurant cards and update UI
+              // search text
+              console.log(searchText);
+            }}
+          >
+            {" "}
+            Search{" "}
+          </button>
+        </div>
         <button
           className="filter-btn"
           onClick={() => {

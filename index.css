@@ -48,8 +48,10 @@
 }
 
 /* Filter */
+.filter {
+  display: flex;
+}
 .filter .filter-btn {
-  color: blue;
   cursor: pointer;
   margin: 10px;
 }
