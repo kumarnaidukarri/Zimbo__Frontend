@@ -6,7 +6,7 @@ import Shimmer from "./Shimmer.js";
 const Body = function () {
   const [defaultListOfRestaurants, setDefaultListOfRestaurants] = useState([]); // local State variable for default-restaurants-list
 
-  const [listOfRestaurants, setListOfRestaurants] = useState([]); // local State variable for restaurants-list
+  const [currentListOfRestaurants, setCurrentListOfRestaurants] = useState([]); // local State variable for restaurants-list
 
   const [searchText, setSearchText] = useState(""); // local State variable for search-input-box
 
@@ -14,8 +14,6 @@ const Body = function () {
   useEffect(() => {
     console.log("Use effect called");
     fetchData();
-    console.log(listOfRestaurants);
-    console.log(defaultListOfRestaurants);
   }, []);
 
   let fetchData = async () => {
@@ -32,7 +30,7 @@ const Body = function () {
         ?.restaurants;
     /* finalData.data.cards[4].card.card.gridElements.infoWithStyle.restaurants = [{info:{},cta:{}}, {info:{},cta:{}}, {info:{},cta:{}}, ...]  */
 
-    setListOfRestaurants(newListOfRestaurants);
+    setCurrentListOfRestaurants(newListOfRestaurants);
 
     // 2. Keep another fetched data for maintaining Default-list purpose
     let newListOfRestaurants2 = await (
@@ -45,7 +43,7 @@ const Body = function () {
   };
 
   // Shimmer UI
-  if (listOfRestaurants.length === 0) {
+  if (currentListOfRestaurants.length === 0) {
     return <Shimmer />;
   }
 
@@ -75,7 +73,7 @@ const Body = function () {
                     .includes(searchText.toLowerCase());
                 }
               );
-              setListOfRestaurants(filteredRestaurants);
+              setCurrentListOfRestaurants(filteredRestaurants);
             }}
           >
             {" "}
@@ -90,7 +88,7 @@ const Body = function () {
             const filteredList = defaultListOfRestaurants.filter(
               (res) => res.info.avgRating > 4.5
             );
-            setListOfRestaurants(filteredList);
+            setCurrentListOfRestaurants(filteredList);
           }}
         >
           Top Rated Restaurants
@@ -100,7 +98,7 @@ const Body = function () {
       <div className="res-container">
         {
           // Dynamically Rendering ResCards
-          listOfRestaurants.map((restaurant) => (
+          currentListOfRestaurants.map((restaurant) => (
             <RestaurantCard key={restaurant.info.id} resData={restaurant} />
           ))
         }
