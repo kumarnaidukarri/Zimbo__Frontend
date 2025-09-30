@@ -4,6 +4,8 @@ import RestaurantCard from "./RestaurantCard.js";
 import Shimmer from "./Shimmer.js";
 
 const Body = function () {
+  const [defaultListOfRestaurants, setDefaultListOfRestaurants] = useState([]); // local State variable for default-restaurants-list
+
   const [listOfRestaurants, setListOfRestaurants] = useState([]); // local State variable for restaurants-list
 
   const [searchText, setSearchText] = useState(""); // local State variable for search-input-box
@@ -12,15 +14,18 @@ const Body = function () {
   useEffect(() => {
     console.log("Use effect called");
     fetchData();
+    console.log(listOfRestaurants);
+    console.log(defaultListOfRestaurants);
   }, []);
 
   let fetchData = async () => {
     /* Swiggy LIVE API Data, URL = "https://swiggy-api-4c740.web.app/swiggy-api.json" */
+
+    // 1. Keep data for Render purpose
     let responseObject = await fetch(
       "https://swiggy-api-4c740.web.app/swiggy-api.json"
     ); // Just for now, lets use "CORS browser extension" to fix cors-errors.
     let finalData = await responseObject.json();
-
     // Update State & re-render with new Data
     const newListOfRestaurants =
       finalData?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
@@ -28,6 +33,15 @@ const Body = function () {
     /* finalData.data.cards[4].card.card.gridElements.infoWithStyle.restaurants = [{info:{},cta:{}}, {info:{},cta:{}}, {info:{},cta:{}}, ...]  */
 
     setListOfRestaurants(newListOfRestaurants);
+
+    // 2. Keep another fetched data for maintaining Default-list purpose
+    let newListOfRestaurants2 = await (
+      await (
+        await fetch("https://swiggy-api-4c740.web.app/swiggy-api.json")
+      ).json()
+    )?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+
+    setDefaultListOfRestaurants(newListOfRestaurants2);
   };
 
   // Shimmer UI
@@ -51,9 +65,9 @@ const Body = function () {
           <button
             className="search-btn"
             onClick={() => {
-              // Filter the restaurant cards and update UI
+              // Search Filter the restaurant cards and update UI
               console.log(searchText);
-              const filteredRestaurants = listOfRestaurants.filter(
+              const filteredRestaurants = defaultListOfRestaurants.filter(
                 (restaurant) => {
                   // "pizza hut".includes("pizza")
                   return restaurant.info.name
@@ -73,7 +87,7 @@ const Body = function () {
           onClick={() => {
             // Filter Logic here
             console.log("Button clicked!");
-            const filteredList = listOfRestaurants.filter(
+            const filteredList = defaultListOfRestaurants.filter(
               (res) => res.info.avgRating > 4.5
             );
             setListOfRestaurants(filteredList);
