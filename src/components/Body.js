@@ -55,8 +55,10 @@ const Body = function () {
               console.log(searchText);
               const filteredRestaurants = listOfRestaurants.filter(
                 (restaurant) => {
-                  // "Pizza Hut".includes("Pizza")
-                  return restaurant.info.name.includes(searchText);
+                  // "pizza hut".includes("pizza")
+                  return restaurant.info.name
+                    .toLowerCase()
+                    .includes(searchText.toLowerCase());
                 }
               );
               setListOfRestaurants(filteredRestaurants);
