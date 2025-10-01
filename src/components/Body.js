@@ -19,10 +19,13 @@ const Body = function () {
   let fetchData = async () => {
     /* Swiggy LIVE API Data, URL = "https://swiggy-api-4c740.web.app/swiggy-api.json" */
 
+    // *** CORS Proxy URL String used to fix cors-errors ***
+    const CorsProxyUrlString = "https://proxy.corsfix.com/?";
+
     // 1. Keep data for Render purpose
     let responseObject = await fetch(
-      "https://swiggy-api-4c740.web.app/swiggy-api.json"
-    ); // Just for now, lets use "CORS browser extension" to fix cors-errors.
+      CorsProxyUrlString + "https://swiggy-api-4c740.web.app/swiggy-api.json"
+    );
     let finalData = await responseObject.json();
     // Update State & re-render with new Data
     const newListOfRestaurants =
@@ -35,7 +38,10 @@ const Body = function () {
     // 2. Keep another fetched data for maintaining Default-list purpose
     let newListOfRestaurants2 = await (
       await (
-        await fetch("https://swiggy-api-4c740.web.app/swiggy-api.json")
+        await fetch(
+          CorsProxyUrlString +
+            "https://swiggy-api-4c740.web.app/swiggy-api.json"
+        )
       ).json()
     )?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
 
