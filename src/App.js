@@ -6,6 +6,10 @@ import { createBrowserRouter, RouterProvider } from "react-router"; // react-rou
 import Header from "./components/Header.js";
 import Body from "./components/Body.js";
 
+import About from "./components/About.js";
+import Contact from "./components/Contact.js";
+import ErrorPage from "./components/ErrorPage.js";
+
 /*
 Components Design:
 AppLayout
@@ -36,28 +40,10 @@ const AppLayout = function () {
   );
 };
 
-const Home = function () {
-  return (
-    <>
-      <h1> this is home page </h1> <p> home page description </p>
-    </>
-  );
-};
-const About = function () {
-  return (
-    <>
-      <h1> this is about page </h1> <p> about page description </p>
-    </>
-  );
-};
-const ErrorPage = function () {
-  return <h1> Oops something went wrong ... </h1>;
-};
-
 const appRouter = createBrowserRouter([
   { path: "/", element: <AppLayout />, errorElement: <ErrorPage /> },
-  { path: "/home", element: <Home /> },
   { path: "/about", element: <About /> },
+  { path: "/contact", element: <Contact /> },
 ]); // creates a router object
 
 const rootEl = ReactDOM.createRoot(document.getElementById("root"));
