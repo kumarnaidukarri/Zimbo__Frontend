@@ -1,21 +1,23 @@
 {
   "name": "zimbo__frontend",
   "version": "1.0.0",
-   "description": "Zimbo is a food ordering app",
+  "description": "Zimbo is a food ordering app",
   "keywords": [],
   "author": "",
   "license": "ISC",
   "scripts": {
     "build": "parcel build index.html",
     "dev": "parcel index.html"
-    
   },
   "devDependencies": {
     "parcel": "^2.16.0"
   },
   "dependencies": {
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-router": "^7.9.3"
   },
-  "browsersList":["last 2 versions"]
+  "browsersList": [
+    "last 2 versions"
+  ]
 }
