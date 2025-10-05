@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { createBrowserRouter, RouterProvider } from "react-router"; // react-router library
+import { createBrowserRouter, RouterProvider, Outlet } from "react-router"; // react-router library
 
 // components imports
 import Header from "./components/Header.js";
@@ -35,15 +35,28 @@ const AppLayout = function () {
   return (
     <div className="app">
       <Header />
-      <Body />
+      {/* comments
+        Outlet will be Replaced with 'Children' based on the 'Path of URl'
+        if path='/'      --> Outlet will fill with <Body />
+        if path='/home'  --> <Home /> 
+        if path='/about' --> <About />  
+      */}
+      <Outlet />
     </div>
   );
 };
 
 const appRouter = createBrowserRouter([
-  { path: "/", element: <AppLayout />, errorElement: <ErrorPage /> },
-  { path: "/about", element: <About /> },
-  { path: "/contact", element: <Contact /> },
+  {
+    path: "/",
+    element: <AppLayout />,
+    children: [
+      { path: "/", element: <Body /> },
+      { path: "/about", element: <About /> },
+      { path: "/contact", element: <Contact /> },
+    ],
+    errorElement: <ErrorPage />,
+  },
 ]); // creates a router object
 
 const rootEl = ReactDOM.createRoot(document.getElementById("root"));
