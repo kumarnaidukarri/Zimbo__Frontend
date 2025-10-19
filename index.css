@@ -1,3 +1,12 @@
+body,
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 /* HEADER */
 .header {
   display: flex;
@@ -72,4 +81,20 @@
 .login-btn {
   padding: 0 20px;
   cursor: pointer;
+}
+
+/* Restaurant Menu */
+.restaurant-menu-container {
+  padding: 20px;
+}
+.restaurant-menu-container .menu {
+  margin: 15px 0;
+
+  ul {
+    list-style-type: none;
+    li {
+      font-size: 22px;
+      margin: 10px 0;
+    }
+  }
 }

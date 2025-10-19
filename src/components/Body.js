@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import RestaurantCard from "./RestaurantCard.js";
 import Shimmer from "./Shimmer.js";
+import { Link } from "react-router";
 
 const Body = function () {
   const [defaultListOfRestaurants, setDefaultListOfRestaurants] = useState([]); // local State variable for default-restaurants-list
@@ -105,7 +106,12 @@ const Body = function () {
         {
           // Dynamically Rendering ResCards
           currentListOfRestaurants.map((restaurant) => (
-            <RestaurantCard key={restaurant.info.id} resData={restaurant} />
+            <Link
+              to={"/restaurants/" + restaurant.info.id}
+              key={restaurant.info.id}
+            >
+              <RestaurantCard resData={restaurant} />
+            </Link>
           ))
         }
       </div>

@@ -9,6 +9,7 @@ import Body from "./components/Body.js";
 import About from "./components/About.js";
 import Contact from "./components/Contact.js";
 import ErrorPage from "./components/ErrorPage.js";
+import RestaurantMenu from "./components/RestaurantMenu.js";
 
 /*
 Components Design:
@@ -54,6 +55,7 @@ const appRouter = createBrowserRouter([
       { path: "/", element: <Body /> },
       { path: "/about", element: <About /> },
       { path: "/contact", element: <Contact /> },
+      { path: "/restaurants/:resId", element: <RestaurantMenu /> }, // dynamic path
     ],
     errorElement: <ErrorPage />,
   },
