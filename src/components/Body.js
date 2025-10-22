@@ -109,6 +109,12 @@ const Body = function () {
             <Link
               to={"/restaurants/" + restaurant.info.id}
               key={restaurant.info.id}
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                display: "flex",
+                flexGrow: "0",
+              }}
             >
               <RestaurantCard resData={restaurant} />
             </Link>

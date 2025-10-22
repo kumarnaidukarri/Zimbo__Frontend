@@ -59,10 +59,14 @@ body,
 /* Filter */
 .filter {
   display: flex;
+  margin-left: 10px;
 }
 .filter .filter-btn {
   cursor: pointer;
   margin: 10px;
+}
+.search .search-btn {
+  margin-left: 5px;
 }
 
 /* Shimmer UI */
