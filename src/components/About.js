@@ -7,8 +7,8 @@ const About = function () {
       <h1> this is about page </h1>
       <p> about page description </p>
 
-      <User name="Ramu" location="Hyderabad" />
-      <UserClass name="Kumar" location="Vizag" />
+      <User name={"Ramu"} location={"Hyderabad"} />
+      <UserClass name={"Kumar"} location={"Vizag"} />
     </>
   );
 };
