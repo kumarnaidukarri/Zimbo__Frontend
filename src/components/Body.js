@@ -13,7 +13,6 @@ const Body = function () {
 
   // useEffect() calls callback, when component is rendered.
   useEffect(() => {
-    console.log("Use effect called");
     fetchData();
   }, []);
 

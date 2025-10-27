@@ -39,8 +39,7 @@ const About = class extends React.Component {
         <h1> this is about page </h1>
         <p> about page description </p>
 
-        <UserClass name={"Firstchild"} />
-        <UserClass name={"Secondchild"} />
+        <User name="kumar" location="vizag" />
       </>
     );
   }

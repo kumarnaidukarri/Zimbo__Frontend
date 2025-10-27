@@ -1,12 +1,28 @@
 // 'User' functional component
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const User = (props) => {
   const { name, location } = props;
 
   const [count, setCount] = useState(0); // creating a state variable
   const [rank, setRank] = useState(4); // creating a state variable
+
+  useEffect(() => {
+    // useEffect() calls after Render.
+    // used for API calls, Timers, ...
+    console.log("useEffect");
+    const timer = setInterval(() => {
+      console.log("hi timer");
+    }, 1000);
+
+    return () => {
+      // return 'Callback' executes in 'Unmounting Phase'.
+      // used for Cleanup tasks purpose.
+      console.log("useEffect Return");
+      clearInterval(timer);
+    };
+  }, []);
 
   return (
     <div className="user-card">
