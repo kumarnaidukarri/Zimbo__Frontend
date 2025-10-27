@@ -42,28 +42,20 @@ class UserClass extends React.Component {
       </div>
     );
   }
-  async componentDidMount() {
+  componentDidMount() {
     // runs in Mounting Phase
     console.log(this.props.name + " componentDidMount");
 
-    // API call to public github
-    const responseObj = await fetch(
-      "https://api.github.com/users/mosh-hamedani"
-    );
-    const jsonData = await responseObj.json();
-
-    this.setState({ userInfo: jsonData }); // state update
+    this.timer = setInterval(() => {
+      console.log("Hi timer");
+    }, 1000);
   }
 
-  shouldComponentUpdate(prevProps, prevState) {
-    // runs at begining of Updating Phase
-    console.log(this.props.name + " ShouldUpdate");
-    console.log("Attention: ", prevProps, prevState);
-    return true; // true(re-render) false(no re-render)
-  }
-  componentDidUpdate() {
-    // runs at ending of Updating Phase
-    console.log(this.props.name + " componentDidUpdate");
+  componentWillUnmount() {
+    // runs in Unmounting Phase.  (when we leave current page/view/navigation link)
+    // Cleanup Tasks
+    clearInterval(this.timer);
+    console.log("componentWillUnmount");
   }
 }
 
