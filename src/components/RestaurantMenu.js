@@ -1,40 +1,14 @@
 // Restaurant Menu Page for each restaurant(dynamic data)
 
-import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 import Shimmer from "./Shimmer.js";
 
-import { RestaurantsMenuCards__Dummy } from "../utils/constants.js";
+import useRestaurantMenu from "../utils/useRestaurantMenu.js"; // custom hook
 
 const RestaurantMenu = () => {
-  const [resInfo, setResInfo] = useState(null); // local state variable
-
   const { resId } = useParams(); // Hook used to access 'URL Path Parameters'
-
-  useEffect(() => {
-    fetchMenu();
-  }, []);
-
-  const fetchMenu = async () => {
-    // Swiggy Menu API is not working currently. !!!
-    /*
-    const responseObj = await fetch(
-      "https://swiggy-api-4c740.web.app/swiggy-api.json"
-    );
-    const jsonData = await responseObj.json();
-    console.log(jsonData);
-    const cards =
-      jsonData.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle
-        ?.restaurants;
-    console.log(cards);
-    */
-
-    // Using Dummy Hard-Coded MenuCards data. !!!
-    const cards = RestaurantsMenuCards__Dummy; // [{},{},{}]
-
-    setResInfo(cards); // updates the state
-  };
+  const resInfo = useRestaurantMenu(resId); // Custom Hook to fetch Menu data
 
   if (resInfo === null) {
     return <Shimmer />;
