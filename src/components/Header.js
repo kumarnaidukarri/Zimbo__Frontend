@@ -2,10 +2,12 @@ import { useState } from "react";
 import { Link } from "react-router"; // Link component
 
 import { LOGO_URL } from "../utils/constants.js";
+import useOnlineStatus from "../utils/useOnlineStatus.js"; // custom hook
 
 const Header = function () {
   // useState() creates a local state variable
   const [btnStatus, setBtnStatus] = useState("Login");
+  const onlineStatus = useOnlineStatus(); // custom hook to get browser status
 
   return (
     <div className="header">
@@ -14,6 +16,7 @@ const Header = function () {
       </div>
       <div className="nav-items">
         <ul>
+          <li> Online Status: {onlineStatus ? "🟢" : "🔴"} </li>
           <li>
             <Link to="/"> Home </Link>
           </li>

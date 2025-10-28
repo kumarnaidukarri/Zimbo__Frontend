@@ -4,6 +4,8 @@ import { Link } from "react-router";
 import RestaurantCard from "./RestaurantCard.js";
 import Shimmer from "./Shimmer.js";
 
+import useOnlineStatus from "../utils/useOnlineStatus.js"; // Custom Hook
+
 const Body = function () {
   const [defaultListOfRestaurants, setDefaultListOfRestaurants] = useState([]); // local State variable for default-restaurants-list
 
@@ -47,6 +49,16 @@ const Body = function () {
 
     setDefaultListOfRestaurants(newListOfRestaurants2);
   };
+
+  // Browser Online Status Page and UI
+  const onlineStatus = useOnlineStatus(); // custom hook to get Browser status online or offline.
+  if (onlineStatus === false) {
+    return (
+      <h1 style={{ margin: "10px" }}>
+        Looks like you are Offline. Please check your Internet Connection.
+      </h1>
+    );
+  }
 
   // Shimmer UI
   if (currentListOfRestaurants.length === 0) {
