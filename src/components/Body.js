@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 import RestaurantCard from "./RestaurantCard.js";
 import Shimmer from "./Shimmer.js";
-import { Link } from "react-router";
 
 const Body = function () {
   const [defaultListOfRestaurants, setDefaultListOfRestaurants] = useState([]); // local State variable for default-restaurants-list

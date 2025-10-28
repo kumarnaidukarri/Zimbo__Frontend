@@ -1,3 +1,5 @@
+// 'User' class component
+
 import React from "react";
 
 // Class Components, its Lifecycle methods are Outdated. But still IMP for fundamentals.
@@ -17,7 +19,6 @@ Phases -
     componentWillUnmount()   
 */
 
-// 'User' class component
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
@@ -28,11 +29,9 @@ class UserClass extends React.Component {
         location: "Default",
       },
     };
-    console.log(this.props.name + " constructor");
   }
   render() {
     const { name, location, avatar_url } = this.state.userInfo;
-    console.log(this.props.name + " render");
     return (
       <div className="user-card">
         <img src={avatar_url} />
@@ -44,8 +43,6 @@ class UserClass extends React.Component {
   }
   componentDidMount() {
     // runs in Mounting Phase
-    console.log(this.props.name + " componentDidMount");
-
     this.timer = setInterval(() => {
       console.log("Hi timer");
     }, 1000);
@@ -55,7 +52,6 @@ class UserClass extends React.Component {
     // runs in Unmounting Phase.  (when we leave current page/view/navigation link)
     // Cleanup Tasks
     clearInterval(this.timer);
-    console.log("componentWillUnmount");
   }
 }
 

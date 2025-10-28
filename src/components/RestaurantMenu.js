@@ -1,8 +1,10 @@
 // Restaurant Menu Page for each restaurant(dynamic data)
+
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 import Shimmer from "./Shimmer.js";
+
 import { RestaurantsMenuCards__Dummy } from "../utils/constants.js";
 
 const RestaurantMenu = () => {

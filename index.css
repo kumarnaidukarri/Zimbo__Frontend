@@ -30,6 +30,10 @@ body,
   padding: 10px;
   margin: 10px;
   cursor: pointer;
+
+  a {
+    color: inherit;
+  }
 }
 
 /* CARDS */
