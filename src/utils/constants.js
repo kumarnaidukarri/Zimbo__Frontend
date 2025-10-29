@@ -13,6 +13,8 @@ const RestaurantsMenuCards__Dummy = [
     imageUrl:
       "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
       "RX_THUMBNAIL/IMAGES/VENDOR/2025/6/9/a1e023e4-bdf3-4bcb-b4d9-2498ba52528e_1003414.JPG",
+    promoted: true,
+    avgRating: 4.3,
     menu: [
       {
         itemName: "Panner pizza",
@@ -62,6 +64,8 @@ const RestaurantsMenuCards__Dummy = [
     imageUrl:
       "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
       "gp1ityra6utvzqn6ghnv",
+    promoted: true,
+    avgRating: 4.3,
     menu: [
       {
         itemName: "Veg Biryani",
@@ -127,6 +131,8 @@ const RestaurantsMenuCards__Dummy = [
     imageUrl:
       "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
       "xph0vf5pvbxjf8xchwjk",
+    promoted: true,
+    avgRating: 4.3,
     menu: [
       {
         itemName: "Veg Biryani",
@@ -192,6 +198,8 @@ const RestaurantsMenuCards__Dummy = [
     imageUrl:
       "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
       "yzgqriufpzmloogcn2vl",
+    promoted: false,
+    avgRating: 4.1,
     menu: [
       {
         itemName: "Veg Biryani",
@@ -257,6 +265,8 @@ const RestaurantsMenuCards__Dummy = [
     imageUrl:
       "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
       "jo9pdipf4elcuch8g55q",
+    promoted: true,
+    avgRating: 4.8,
     menu: [
       {
         itemName: "Veg Biryani",
@@ -322,6 +332,8 @@ const RestaurantsMenuCards__Dummy = [
     imageUrl:
       "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
       "h7oibtpm7kqks8cqz3gh",
+    promoted: true,
+    avgRating: 4.3,
     menu: [
       {
         itemName: "Veg Biryani",
@@ -387,6 +399,8 @@ const RestaurantsMenuCards__Dummy = [
     imageUrl:
       "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
       "glepanv4xjfnhsbieam1",
+    promoted: false,
+    avgRating: 4.2,
     menu: [
       {
         itemName: "Veg Biryani",
@@ -452,6 +466,8 @@ const RestaurantsMenuCards__Dummy = [
     imageUrl:
       "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" +
       "ryzswg44bt7thqzkuaj4",
+    promoted: false,
+    avgRating: 4.1,
     menu: [
       {
         itemName: "Veg Biryani",

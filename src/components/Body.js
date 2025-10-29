@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
-import RestaurantCard from "./RestaurantCard.js";
+import RestaurantCard from "./RestaurantCard.js"; // normal component
+import { withPromotedLabel } from "./RestaurantCard.js"; // Higher Order Component
 import Shimmer from "./Shimmer.js";
 
 import useOnlineStatus from "../utils/useOnlineStatus.js"; // Custom Hook
@@ -12,6 +13,8 @@ const Body = function () {
   const [currentListOfRestaurants, setCurrentListOfRestaurants] = useState([]); // local State variable for restaurants-list
 
   const [searchText, setSearchText] = useState(""); // local State variable for search-input-box
+
+  const RestaurantCardPromoted = withPromotedLabel(RestaurantCard); // Higher order component
 
   // useEffect() calls callback, when component is rendered.
   useEffect(() => {
@@ -128,7 +131,19 @@ const Body = function () {
                 flexGrow: "0",
               }}
             >
-              <RestaurantCard resData={restaurant} />
+              {/* 
+                i)property 'restaurant.promoted'=true means render 'special promoted res card', else 'normal res card'.
+                  restaurant.promoted===true ? (<RestaurantCardPromoted resData={restaurant}/>) : (<RestaurantCard resData={restaurant}/>)
+                ii)Currently, Restaurant Object don't have "promoted" property. 
+                  so, Immitate logic using 'avgRating' property, Special Card(avgRating>=4.3) or Normal Card(avgRating<4.3)  
+                  restaurant.avgRating>=4.3 ? (<RestaurantCardPromoted resData={restaurant}/>) : (<RestaurantCard resData={restaurant}/>)
+              */}
+
+              {restaurant.info.avgRating >= 4.3 ? (
+                <RestaurantCardPromoted resData={restaurant} />
+              ) : (
+                <RestaurantCard resData={restaurant} />
+              )}
             </Link>
           ))
         }
