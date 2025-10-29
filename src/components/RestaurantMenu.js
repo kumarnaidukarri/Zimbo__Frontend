@@ -26,15 +26,19 @@ const RestaurantMenu = () => {
 
   // render menu card
   return (
-    <div className="restaurant-menu-container">
-      <div>
-        <h1> Restaurant: {name} </h1>
-        <h2 style={{ marginTop: "10px", marginBottom: "15px" }}> id: {id} </h2>
-        <img src={imageUrl} width={"300px"} />
+    <div className="restaurant-menu-container  pl-6 py-7 bg-amber-50 h-[90vh]">
+      <div className="text-lg font-bold">
+        <img src={imageUrl} width={"300px"} className="my-2 rounded" />
+        <h1>
+          Restaurant: <span className="font-normal">{name}</span>
+        </h1>
+        <h2>
+          id: <span className="font-normal">{id}</span>
+        </h2>
       </div>
-      <div className="menu">
-        <h2> Menu </h2>
-        <ul>
+      <div className="menu  mt-4">
+        <h2 className="font-bold text-lg"> Menu: </h2>
+        <ul className="">
           {menu.map((item) => (
             <li key={item.itemId}>
               {item.itemName}

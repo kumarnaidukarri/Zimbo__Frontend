@@ -1,3 +1,9 @@
+/* TailwindCss Library */
+@import "tailwindcss";
+
+/* Commenting all CSS code */
+/* it will break stylings of components. but, we will fix it with TailwindCss later */
+/*
 body,
 *,
 *::before,
@@ -6,8 +12,10 @@ body,
   padding: 0;
   box-sizing: border-box;
 }
+*/
 
 /* HEADER */
+/*
 .header {
   display: flex;
   flex-direction: row;
@@ -35,8 +43,10 @@ body,
     color: inherit;
   }
 }
+*/
 
 /* CARDS */
+/*
 .search {
   padding: 10px;
 }
@@ -59,9 +69,11 @@ body,
   width: 100%;
   height: 200px;
 }
+*/
 
 /* Filter */
-.filter {
+/*
+.top-container {
   display: flex;
   margin-left: 10px;
 }
@@ -72,8 +84,10 @@ body,
 .search .search-btn {
   margin-left: 5px;
 }
+*/
 
 /* Shimmer UI */
+/*
 .shimmer-container {
   display: flex;
   flex-wrap: wrap;
@@ -84,14 +98,18 @@ body,
   margin: 20px;
   background-color: #f0f0f0;
 }
+*/
 
 /* login btn */
+/*
 .login-btn {
   padding: 0 20px;
   cursor: pointer;
 }
+*/
 
 /* Restaurant Menu */
+/*
 .restaurant-menu-container {
   padding: 20px;
 }
@@ -106,9 +124,12 @@ body,
     }
   }
 }
+*/
 
 /*  user styles */
+/*
 .user-card {
   padding: 10px;
   border: 1px solid black;
 }
+*/

@@ -67,19 +67,19 @@ const Body = function () {
 
   return (
     <div className="body">
-      <div className="filter">
+      <div className="top-container  flex items-center p-7 bg-amber-50">
         <div className="search">
           <input
             type="text"
             value={searchText}
+            className="search-box px-1 py[1px] border bg-gray-100"
             onChange={(e) => {
               console.log(e.target.value);
               setSearchText(e.target.value);
             }}
-            className="search-box"
           />
           <button
-            className="search-btn"
+            className="search-btn  px-4 py-1 ml-3 bg-green-100 rounded-sm"
             onClick={() => {
               // Search Filter the restaurant cards and update UI
               console.log(searchText);
@@ -94,26 +94,27 @@ const Body = function () {
               setCurrentListOfRestaurants(filteredRestaurants);
             }}
           >
-            {" "}
-            Search{" "}
+            Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            // Filter Logic here
-            console.log("Button clicked!");
-            const filteredList = defaultListOfRestaurants.filter(
-              (res) => res.info.avgRating > 4.5
-            );
-            setCurrentListOfRestaurants(filteredList);
-          }}
-        >
-          Top Rated Restaurants
-        </button>
+        <div className="filter  ml-6">
+          <button
+            className="filter-btn  px-4 py-2 bg-gray-100 rounded-sm"
+            onClick={() => {
+              // Filter Logic here
+              console.log("Button clicked!");
+              const filteredList = defaultListOfRestaurants.filter(
+                (res) => res.info.avgRating > 4.5
+              );
+              setCurrentListOfRestaurants(filteredList);
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+        </div>
       </div>
 
-      <div className="res-container">
+      <div className="res-container  flex flex-wrap">
         {
           // Dynamically Rendering ResCards
           currentListOfRestaurants.map((restaurant) => (
