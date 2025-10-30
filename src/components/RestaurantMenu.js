@@ -3,6 +3,7 @@
 import { useParams } from "react-router";
 
 import Shimmer from "./Shimmer.js";
+import MenuCategoryAccordion from "./MenuCategoryAccordion.js"; // menu toggle component
 
 import useRestaurantMenu from "../utils/useRestaurantMenu.js"; // custom hook
 
@@ -24,9 +25,23 @@ const RestaurantMenu = () => {
 
   const { name, id, imageUrl, menu } = filteredRestaurantCard;
 
+  const vegMenu = menu.filter((item) => item.category === "veg");
+  const nonVegMenu = menu.filter((item) => item.category === "non-veg");
+  const recommendedMenu = menu.filter((item) => Number(item.price) >= 200);
+
+  const menuCategories = [
+    { menuTitle: "All Menu", menu: menu },
+    { menuTitle: "Recommended Menu", menu: recommendedMenu },
+    { menuTitle: "Veg Menu", menu: vegMenu },
+    { menuTitle: "Non Veg Menu", menu: nonVegMenu },
+  ];
+
   // render menu card
   return (
-    <div className="restaurant-menu-container  pl-6 py-7 bg-amber-50 h-[90vh]">
+    <div
+      className="restaurant-menu-container  pl-6 py-7 bg-amber-50"
+      style={{ minHeight: "90vh" }}
+    >
       <div className="text-lg font-bold">
         <img src={imageUrl} width={"300px"} className="my-2 rounded" />
         <h1>
@@ -36,17 +51,12 @@ const RestaurantMenu = () => {
           id: <span className="font-normal">{id}</span>
         </h2>
       </div>
-      <div className="menu  mt-4">
-        <h2 className="font-bold text-lg"> Menu: </h2>
-        <ul className="">
-          {menu.map((item) => (
-            <li key={item.itemId}>
-              {item.itemName}
-              {" - Rs."}
-              {item.price}
-            </li>
-          ))}
-        </ul>
+      <div className="menu  mt-8">
+        <h2 className="font-bold text-xl"> Menu: </h2>
+        {/* Menu Accordion Component */}
+        {menuCategories.map((menuCategory, index, arr) => (
+          <MenuCategoryAccordion key={index} menuCategory={menuCategory} />
+        ))}
       </div>
     </div>
   );
