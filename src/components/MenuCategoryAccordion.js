@@ -1,16 +1,11 @@
 // Menu Category Accordion - Toggle Component
 
-import { useState } from "react";
-
 const MenuCategoryAccordion = (props) => {
   const { menuTitle, menu } = props.menuCategory;
-
-  // local state variable - to store Menu Accordion toggle status(true-show, false-hide)
-  const [showItems, setShowItems] = useState(false);
+  const { showItems, setShowIndex } = props;
 
   const handleClick = () => {
-    console.log("menu toggle button clicked");
-    setShowItems(!showItems);
+    setShowIndex();
   };
 
   return (

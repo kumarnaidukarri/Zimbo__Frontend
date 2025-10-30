@@ -1,15 +1,19 @@
 // Restaurant Menu Page for each restaurant(dynamic data)
 
+import { useState } from "react";
 import { useParams } from "react-router";
 
 import Shimmer from "./Shimmer.js";
 import MenuCategoryAccordion from "./MenuCategoryAccordion.js"; // menu toggle component
 
 import useRestaurantMenu from "../utils/useRestaurantMenu.js"; // custom hook
+import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams(); // Hook used to access 'URL Path Parameters'
   const resInfo = useRestaurantMenu(resId); // Custom Hook to fetch Menu data
+
+  const [showIndex, setShowIndex] = useState(); // state variable for childs(menu accordions)
 
   if (resInfo === null) {
     return <Shimmer />;
@@ -55,7 +59,13 @@ const RestaurantMenu = () => {
         <h2 className="font-bold text-xl"> Menu: </h2>
         {/* Menu Accordion Component */}
         {menuCategories.map((menuCategory, index, arr) => (
-          <MenuCategoryAccordion key={index} menuCategory={menuCategory} />
+          // Parent component sending Prop 'showItems' to control the Child components hide/show toggle.
+          <MenuCategoryAccordion
+            key={index}
+            menuCategory={menuCategory}
+            showItems={index === showIndex ? true : false}
+            setShowIndex={() => setShowIndex(index)}
+          />
         ))}
       </div>
     </div>
@@ -63,3 +73,7 @@ const RestaurantMenu = () => {
 };
 
 export default RestaurantMenu;
+
+// RestaurantMenu is a "Parent Component".
+// MenuCategoryAccordion is a "Child Component" and "Controlled Component"
+// Since, Parent component controls the Child components to show/hide toggle by passing a Prop 'showItems'.
