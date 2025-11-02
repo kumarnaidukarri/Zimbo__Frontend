@@ -1,12 +1,18 @@
 // 'User' functional component
 
 import { useEffect, useState } from "react";
+import { useContext } from "react"; // importing 'useContext' hook from library
+
+import UserContext from "../utils/UserContext"; // importing our created context 'UserContext'
 
 const User = (props) => {
   const { name, location } = props;
 
   const [count, setCount] = useState(0); // creating a state variable
   const [rank, setRank] = useState(4); // creating a state variable
+
+  const userData = useContext(UserContext); // accessing Data of 'UserContext' using hook
+  console.log(userData);
 
   useEffect(() => {
     // useEffect() calls after Render.
@@ -45,3 +51,9 @@ const User = (props) => {
 };
 
 export default User;
+
+// context in functional component.
+/*
+ 1. import 'useContext' hook from 'react' library and  your created 'Context' from your file.
+ 2. access the Data from your context using 'useContext()' hook.
+*/

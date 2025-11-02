@@ -1,6 +1,7 @@
 // 'User' class component
 
 import React from "react";
+import UserContext from "../utils/UserContext";
 
 // Class Components, its Lifecycle methods are Outdated. But still IMP for fundamentals.
 /* 
@@ -35,12 +36,14 @@ class UserClass extends React.Component {
     this.setState({ count: this.state.count + 1 });
   };
 
+  static contextType = UserContext; // static method to access context. 'this.context'
+
   render() {
     const { name, location } = this;
     const { count, rank } = this.state;
 
     return (
-      <div className="user-card" style={{ backgroundColor: "lightsteelblue" }}>
+      <div className="user-card" style={{ backgroundColor: "lightSteelBlue" }}>
         <h2> Name: {name} </h2>
         <h3> Location: {location} </h3>
         <h4> Contact: @Example Class based Component</h4>
@@ -57,6 +60,15 @@ class UserClass extends React.Component {
         >
           Count+ btn
         </button>
+
+        <UserContext.Consumer>
+          {(updatedData) => (
+            <div>
+              <p> login user: {updatedData.loginUser} </p>
+              <p> login status: {this.context.loginStatus.toString()} </p>
+            </div>
+          )}
+        </UserContext.Consumer>
       </div>
     );
   }

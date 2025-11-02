@@ -2,6 +2,8 @@ import User from "./User";
 import UserClass from "./UserClass";
 import React from "react";
 
+import UserContext from "../utils/UserContext";
+
 // Life Cycle of react component:
 /* 
 Phases -
@@ -36,8 +38,21 @@ const About = class extends React.Component {
         <h1> this is about page </h1>
         <p> about page description </p>
 
-        <User name="kumar" location="india" />
-        <UserClass name="Don lee" location="china" />
+        <UserContext.Consumer>
+          {(data) => (
+            <div>
+              <p>login user: {data.loginUser}</p>
+              <p>login status: {data.loginStatus.toString()}</p>
+            </div>
+          )}
+        </UserContext.Consumer>
+
+        <UserContext.Provider
+          value={{ loginUser: "Mr Rocky", loginStatus: true }}
+        >
+          <User name="kumar" location="india" />
+          <UserClass name="Don lee" location="china" />
+        </UserContext.Provider>
       </>
     );
   }
