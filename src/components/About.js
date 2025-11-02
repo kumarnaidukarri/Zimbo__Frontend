@@ -47,12 +47,32 @@ const About = class extends React.Component {
           )}
         </UserContext.Consumer>
 
-        <UserContext.Provider
-          value={{ loginUser: "Mr Rocky", loginStatus: true }}
-        >
-          <User name="kumar" location="india" />
-          <UserClass name="Don lee" location="china" />
-        </UserContext.Provider>
+        <User name="kumar" location="india" />
+        <UserClass name="Don lee" location="china" />
+
+        <UserContext.Consumer>
+          {(data) => (
+            <div
+              className="user-box"
+              style={{ margin: "10px 0", backgroundColor: "lightGreen" }}
+            >
+              <label> User Name: </label>
+              <input
+                value={data.loginUser}
+                onChange={(event) => {
+                  console.log(event.target.value);
+                  data.setUserName(event.target.value);
+                }}
+                style={{
+                  border: "1px solid black",
+                  margin: "5px",
+                  padding: "5px",
+                  backgroundColor: "lightGrey",
+                }}
+              />
+            </div>
+          )}
+        </UserContext.Consumer>
       </>
     );
   }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router"; // react-router library
 import { lazy, Suspense } from "react"; // optimization
@@ -11,6 +11,8 @@ import About from "./components/About.js";
 import Contact from "./components/Contact.js";
 import ErrorPage from "./components/ErrorPage.js";
 import RestaurantMenu from "./components/RestaurantMenu.js";
+
+import UserContext from "./utils/UserContext.js";
 
 // Technique: Lazy Loading or Code Splitting or on demand loading or Chunking or Dynamic Bundling.
 // import Grocery from "./components/Grocery.js";
@@ -38,17 +40,31 @@ AppLayout
 */
 
 const AppLayout = function () {
+  const { loginUser } = useContext(UserContext);
+  const [userName, setUserName] = useState(loginUser);
+
+  // Authentication
+  useEffect(() => {
+    // API call and get username, password
+    const data = { name: "Mr Robin" };
+    setUserName(data.name);
+  }, []);
+
   return (
-    <div className="app">
-      <Header />
-      {/* comments
+    <UserContext.Provider
+      value={{ loginUser: userName, loginStatus: true, setUserName }}
+    >
+      <div className="app">
+        <Header />
+        {/* comments
         Outlet will be Replaced with 'Children' based on the 'Path of URl'
         if path='/'      --> Outlet will fill with <Body />
         if path='/home'  --> <Home /> 
         if path='/about' --> <About />  
       */}
-      <Outlet />
-    </div>
+        <Outlet />
+      </div>
+    </UserContext.Provider>
   );
 };
 
