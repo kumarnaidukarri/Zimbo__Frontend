@@ -7,13 +7,12 @@ import Shimmer from "./Shimmer.js";
 import MenuCategoryAccordion from "./MenuCategoryAccordion.js"; // menu toggle component
 
 import useRestaurantMenu from "../utils/useRestaurantMenu.js"; // custom hook
-import { useState } from "react";
 
 const RestaurantMenu = () => {
   const { resId } = useParams(); // Hook used to access 'URL Path Parameters'
   const resInfo = useRestaurantMenu(resId); // Custom Hook to fetch Menu data
 
-  const [showIndex, setShowIndex] = useState(); // state variable for childs(menu accordions)
+  const [activeIndex, setActiveIndex] = useState(null); // state variable Tracks currently opened 'menu category accordion'
 
   if (resInfo === null) {
     return <Shimmer />;
@@ -63,8 +62,9 @@ const RestaurantMenu = () => {
           <MenuCategoryAccordion
             key={index}
             menuCategory={menuCategory}
-            showItems={index === showIndex ? true : false}
-            setShowIndex={() => setShowIndex(index)}
+            index={index}
+            activeIndex={activeIndex}
+            setActiveIndex={setActiveIndex}
           />
         ))}
       </div>

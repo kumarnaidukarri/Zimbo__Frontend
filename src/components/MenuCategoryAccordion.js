@@ -2,10 +2,12 @@
 
 const MenuCategoryAccordion = (props) => {
   const { menuTitle, menu } = props.menuCategory;
-  const { showItems, setShowIndex } = props;
+  const { index, activeIndex, setActiveIndex } = props;
 
-  const handleClick = () => {
-    setShowIndex();
+  const toggleCard = () => {
+    // Toggle the Menu
+    // Set the "active index" to "clicked card's index",  (or) close it if already opened.
+    setActiveIndex(activeIndex === index ? null : index);
   };
 
   return (
@@ -13,7 +15,7 @@ const MenuCategoryAccordion = (props) => {
       {/* Accordion Header */}
       <div
         className="accordion-header  w-6/12 bg-gray-50 shadow-lg flex justify-between p-2 pl-1"
-        onClick={handleClick}
+        onClick={toggleCard}
       >
         <span className="text-xl font-bold">
           {menuTitle || "Default Menu Title"} ({menu.length})
@@ -21,7 +23,7 @@ const MenuCategoryAccordion = (props) => {
         <span> 🔽 </span>
       </div>
       {/* Accordion Body */}
-      {showItems && (
+      {activeIndex === index && (
         <div className="accordion-body  w-6/12 bg-gray-50">
           <ul className="menu-list  px-3 py-1">
             {menu.map((item) => (
