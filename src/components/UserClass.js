@@ -22,36 +22,51 @@ Phases -
 class UserClass extends React.Component {
   constructor(props) {
     super(props);
+    this.name = props.name;
+    this.location = props.location;
 
     this.state = {
-      userInfo: {
-        name: "Dummy",
-        location: "Default",
-      },
+      count: 0,
+      rank: 8,
     };
   }
+
+  increaseCount = () => {
+    this.setState({ count: this.state.count + 1 });
+  };
+
   render() {
-    const { name, location, avatar_url } = this.state.userInfo;
+    const { name, location } = this;
+    const { count, rank } = this.state;
+
     return (
-      <div className="user-card">
-        <img src={avatar_url} />
+      <div className="user-card" style={{ backgroundColor: "lightsteelblue" }}>
         <h2> Name: {name} </h2>
         <h3> Location: {location} </h3>
-        <h4> Contact: </h4>
+        <h4> Contact: @Example Class based Component</h4>
+        <p> Count: {count}</p>
+        <p> Rank: {rank}</p>
+        <button
+          style={{
+            backgroundColor: "green",
+            borderRadius: "10px",
+            padding: "5px",
+            margin: "10px 0",
+          }}
+          onClick={this.increaseCount}
+        >
+          Count+ btn
+        </button>
       </div>
     );
   }
   componentDidMount() {
     // runs in Mounting Phase
-    this.timer = setInterval(() => {
-      console.log("Hi timer");
-    }, 1000);
   }
 
   componentWillUnmount() {
     // runs in Unmounting Phase.  (when we leave current page/view/navigation link)
     // Cleanup Tasks
-    clearInterval(this.timer);
   }
 }
 

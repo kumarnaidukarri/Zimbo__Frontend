@@ -85,7 +85,7 @@ const Body = function () {
             className="search-btn  px-4 py-1 ml-3 bg-green-100 rounded-sm"
             onClick={() => {
               // Search Filter the restaurant cards and update UI
-              console.log(searchText);
+              console.log("Search button clicked!", searchText);
               const filteredRestaurants = defaultListOfRestaurants.filter(
                 (restaurant) => {
                   // "pizza hut".includes("pizza")
@@ -105,7 +105,7 @@ const Body = function () {
             className="filter-btn  px-4 py-2 bg-gray-100 rounded-sm"
             onClick={() => {
               // Filter Logic here
-              console.log("Button clicked!");
+              console.log("Filter button clicked! - avgRating>4.5");
               const filteredList = defaultListOfRestaurants.filter(
                 (res) => res.info.avgRating > 4.5
               );

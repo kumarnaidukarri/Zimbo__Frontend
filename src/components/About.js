@@ -28,25 +28,21 @@ Phases -
 const About = class extends React.Component {
   constructor(props) {
     super(props);
-    console.log("Parent Constructor !");
   }
 
   render() {
-    console.log("Parent Render !");
-
     return (
       <>
         <h1> this is about page </h1>
         <p> about page description </p>
 
-        <User name="kumar" location="vizag" />
+        <User name="kumar" location="india" />
+        <UserClass name="Don lee" location="china" />
       </>
     );
   }
 
-  componentDidMount() {
-    console.log("Parent ComponentDidMount !");
-  }
+  componentDidMount() {}
 };
 
 /*

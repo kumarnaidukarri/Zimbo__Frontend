@@ -12,31 +12,33 @@ const User = (props) => {
     // useEffect() calls after Render.
     // used for API calls, Timers, ...
     console.log("useEffect");
-    const timer = setInterval(() => {
-      console.log("hi timer");
-    }, 1000);
 
     return () => {
       // return 'Callback' executes in 'Unmounting Phase'.
       // used for Cleanup tasks purpose.
       console.log("useEffect Return");
-      clearInterval(timer);
     };
   }, []);
 
   return (
-    <div className="user-card">
+    <div className="user-card" style={{ backgroundColor: "lightgrey" }}>
       <h2>Name: {name} </h2>
       <h3>Location: {location} </h3>
-      <h4>Contact: @example Functional based Component </h4>
+      <h4>Contact: @Example Functional based Component </h4>
       <p> Count: {count} </p>
       <p> Rank: {rank} </p>
       <button
+        style={{
+          backgroundColor: "green",
+          borderRadius: "10px",
+          padding: "5px",
+          margin: "10px 0",
+        }}
         onClick={() => {
           setCount(count + 1);
         }}
       >
-        count increase
+        Count+ btn
       </button>
     </div>
   );
