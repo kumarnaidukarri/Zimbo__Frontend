@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router"; // Link component
+import { useSelector } from "react-redux"; // hook to subscribe redux store
 
 import { LOGO_URL } from "../utils/constants.js";
 import useOnlineStatus from "../utils/useOnlineStatus.js"; // custom hook
@@ -8,6 +9,10 @@ const Header = function () {
   // useState() creates a local state variable
   const [btnStatus, setBtnStatus] = useState("Login");
   const onlineStatus = useOnlineStatus(); // custom hook to get browser status
+
+  // we pass a parameter to get specific portion of store data. i.e, cart portion
+  const cartItems = useSelector((store) => store.cart.items);
+  console.log(cartItems);
 
   return (
     <div className="header  flex justify-between bg-pink-50 shadow-lg">
@@ -29,7 +34,7 @@ const Header = function () {
           <li className="px-4">
             <Link to="/grocery">Grocery</Link>
           </li>
-          <li className="px-4">Cart</li>
+          <li className="px-4">Cart ({cartItems.length} items)</li>
           <button
             className="login-btn"
             onClick={() => {
