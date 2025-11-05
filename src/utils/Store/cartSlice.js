@@ -10,6 +10,8 @@ const cartSlice = createSlice({
     addItem: (state, action) => {
       // mutating the state here
       state.items.push(action.payload);
+      // 'payload' holds 'argument value', that we pass during Dispatching an Action call.
+      //  i.e, dispatch(addItem("Ice Cream"))  ----> action.payload = "Ice Cream"
     },
     removeItem: (state, action) => {
       // mutating the state here

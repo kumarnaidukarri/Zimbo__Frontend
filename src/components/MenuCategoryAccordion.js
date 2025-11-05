@@ -1,5 +1,8 @@
 // Menu Category Accordion - Toggle Component
 
+import { useDispatch } from "react-redux"; // hook
+import { addItem } from "../utils/Store/cartSlice"; // cartSlice of redux store
+
 const MenuCategoryAccordion = (props) => {
   const { menuTitle, menu } = props.menuCategory;
   const { index, activeIndex, setActiveIndex } = props;
@@ -8,6 +11,15 @@ const MenuCategoryAccordion = (props) => {
     // Toggle the Menu
     // Set the "active index" to "clicked card's index",  (or) close it if already opened.
     setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  // useDispatch() hook returns a 'dispatch function'. i.e, function used to dispatch an action.
+  const dispatch = useDispatch();
+
+  const handleAddItem = () => {
+    // Dispatch an action.
+    // BehindScenes, dispatch() makes an object {payload:'Ice Cream'} with our argument value and passed as 2nd argument to our reducer function.
+    dispatch(addItem("Ice Cream")); // dispatch(actionF(val))
   };
 
   return (
@@ -29,9 +41,17 @@ const MenuCategoryAccordion = (props) => {
             {menu.map((item) => (
               <li
                 key={item.itemId}
-                className="my-3 first:mt-0 last:mb-0 text-lg"
+                className="my-3 first:mt-0 last:mb-0 text-lg flex justify-between"
               >
-                {`${item.itemName} - Rs.${item.price}/-`}
+                <span>{`${item.itemName} - Rs.${item.price}/-`}</span>
+                <span>
+                  <button
+                    className="px-2 py-1 mx-16 rounded-lg bg-gray-900 text-white shadow-lg cursor-pointer hover:bg-gray-700"
+                    onClick={handleAddItem}
+                  >
+                    add +
+                  </button>
+                </span>
               </li>
             ))}
           </ul>
