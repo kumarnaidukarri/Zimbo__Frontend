@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router"; // react-router library
 import { lazy, Suspense } from "react"; // optimization
+import { Provider } from "react-redux"; // Provider connects our App to our Redux store.
 
 // components imports
 import Header from "./components/Header.js";
@@ -13,6 +14,7 @@ import ErrorPage from "./components/ErrorPage.js";
 import RestaurantMenu from "./components/RestaurantMenu.js";
 
 import UserContext from "./utils/UserContext.js";
+import appStore from "./utils/Store/appStore.js"; // Redux store
 
 // Technique: Lazy Loading or Code Splitting or on demand loading or Chunking or Dynamic Bundling.
 // import Grocery from "./components/Grocery.js";
@@ -51,20 +53,22 @@ const AppLayout = function () {
   }, []);
 
   return (
-    <UserContext.Provider
-      value={{ loginUser: userName, loginStatus: true, setUserName }}
-    >
-      <div className="app">
-        <Header />
-        {/* comments
+    <Provider store={appStore}>
+      <UserContext.Provider
+        value={{ loginUser: userName, loginStatus: true, setUserName }}
+      >
+        <div className="app">
+          <Header />
+          {/* comments
         Outlet will be Replaced with 'Children' based on the 'Path of URl'
         if path='/'      --> Outlet will fill with <Body />
         if path='/home'  --> <Home /> 
         if path='/about' --> <About />  
       */}
-        <Outlet />
-      </div>
-    </UserContext.Provider>
+          <Outlet />
+        </div>
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
