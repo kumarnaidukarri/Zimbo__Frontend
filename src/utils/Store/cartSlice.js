@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit";
 // Export those Actions and Reducers
 const cartSlice = createSlice({
   name: "cart",
-  initialState: { items: ["Pizza", "Burger", "Biryani", "Paneer"] },
+  initialState: { items: [] }, //"Pizza", "Burger", "Biryani", "Paneer"
   reducers: {
     addItem: (state, action) => {
       // mutating the state here

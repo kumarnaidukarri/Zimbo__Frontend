@@ -16,10 +16,10 @@ const MenuCategoryAccordion = (props) => {
   // useDispatch() hook returns a 'dispatch function'. i.e, function used to dispatch an action.
   const dispatch = useDispatch();
 
-  const handleAddItem = () => {
+  const handleAddItem = (item) => {
     // Dispatch an action.
     // BehindScenes, dispatch() makes an object {payload:'Ice Cream'} with our argument value and passed as 2nd argument to our reducer function.
-    dispatch(addItem("Ice Cream")); // dispatch(actionF(val))
+    dispatch(addItem(item)); // dispatch(actionF(val))
   };
 
   return (
@@ -46,8 +46,8 @@ const MenuCategoryAccordion = (props) => {
                 <span>{`${item.itemName} - Rs.${item.price}/-`}</span>
                 <span>
                   <button
-                    className="px-2 py-1 mx-16 rounded-lg bg-gray-900 text-white shadow-lg cursor-pointer hover:bg-gray-700"
-                    onClick={handleAddItem}
+                    className="px-2 py-1 mr-10 rounded-lg bg-gray-900 text-white shadow-lg cursor-pointer hover:bg-gray-700"
+                    onClick={() => handleAddItem(item)}
                   >
                     add +
                   </button>

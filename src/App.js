@@ -12,6 +12,7 @@ import About from "./components/About.js";
 import Contact from "./components/Contact.js";
 import ErrorPage from "./components/ErrorPage.js";
 import RestaurantMenu from "./components/RestaurantMenu.js";
+import Cart from "./components/Cart.js";
 
 import UserContext from "./utils/UserContext.js";
 import appStore from "./utils/Store/appStore.js"; // Redux store
@@ -89,6 +90,7 @@ const appRouter = createBrowserRouter([
         ),
       },
       { path: "/restaurants/:resId", element: <RestaurantMenu /> }, // dynamic path
+      { path: "/cart", element: <Cart /> },
     ],
     errorElement: <ErrorPage />,
   },
