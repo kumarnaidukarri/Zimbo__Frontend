@@ -27,3 +27,4 @@ Filtering Cards by ratings and Re-rendering using Hooks(useState)
 
 
 Technologies used: Reactjs, parcel
+Testing libraries: Jest, @testing-library/react, @testing-library/dom.
