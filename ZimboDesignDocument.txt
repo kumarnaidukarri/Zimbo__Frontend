@@ -50,3 +50,25 @@ v)  Make JEST configuration:
 		                    choose options(jsdom, coverage reports, babel, clear mock calls).
     additional dependency library for Jest v28 greater:
       npm install --save-dev jest-environment-jsdom  :- it gives environment to run test cases.
+
+------- test setup completed ---------
+
+Writing Test Cases :-
+ i)  create a folder '__test__' in source folder. this folder holds our testing files.
+ ii) create '.js' '.test.js' 'spec.js' named testing files in that folder.
+ Ex:-
+
+   src / sum.js file:-
+     export const sum = (a,b) => { return a+b }
+
+   ./ src / __tests__ / sum.test.js file:-
+     import {sum} from "./src/sum.js";
+     // test(str,callback)
+     test("Sum function should calculate sum of two numbers", () => {
+	 const result = sum(3,4);
+        expect(result).toBe(7);  // Assertion - new method
+     });
+ 
+    command: npm run jest :- it runs test cases from Test files.
+  
+  
