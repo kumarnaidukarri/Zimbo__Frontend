@@ -28,3 +28,7 @@ Filtering Cards by ratings and Re-rendering using Hooks(useState)
 
 Technologies used: Reactjs, parcel
 Testing libraries: Jest, @testing-library/react, @testing-library/dom.
+
+extra dependencies from jest: npm install --save-dev babel-jest @babel/core @babel/preset-env
+configure babel.config.js file of jest: 
+module.exports = {presets: [['@babel/preset-env', {targets: {node: 'current'}}]]};
