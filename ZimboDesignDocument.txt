@@ -27,15 +27,26 @@ Filtering Cards by ratings and Re-rendering using Hooks(useState)
 
 
 Technologies used: Reactjs, parcel
-Testing libraries: Jest, @testing-library/react, @testing-library/dom.
 
-extra dependencies from jest: npm install --save-dev babel-jest @babel/core @babel/preset-env
-configure babel.config.js file of jest: 
-module.exports = {presets: [['@babel/preset-env', {targets: {node: 'current'}}]]};
+Testing Setup:-
+i) Testing libraries: Jest, @testing-library/react, @testing-library/dom.
+ii) extra dependencies from jest: npm install --save-dev babel-jest @babel/core @babel/preset-env
+    configure 'babel.config.js' file of jest in source folder of project: 
+     module.exports = {presets: [['@babel/preset-env', {targets: {node: 'current'}}]]};
 
-!!! Fix Conflict of "babel config of Parcel" with "babel config of Jest". Follow parcel docs jest section:-
+iii)!!! Fix Conflict of "babel config of Parcel" with "babel config of Jest". Follow parcel docs jest section:-
     add the file in your source of project:
      .parcelrc file: 
                  {"extends": "@parcel/config-default", 
                   "transformers": {"*.{js,mjs,jsx,cjs,ts,tsx}": ["@parcel/transformer-js","@parcel/transformer-react-refresh-wrap"]}
                  }
+
+iv) Scripts:
+     package.json: scripts: {"test" : "jest"};
+     npm run test or npx run jest
+
+v)  Make JEST configuration:    
+    npm init jest@latest :- it initilizes jest and creates a new config file 'jest.config.js'.
+		                    choose options(jsdom, coverage reports, babel, clear mock calls).
+    additional dependency library for Jest v28 greater:
+      npm install --save-dev jest-environment-jsdom  :- it gives environment to run test cases.
