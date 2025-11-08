@@ -28,7 +28,7 @@ describe("Contact us page all Test cases", () => {
 
     // 2. Querying finds get element from screen
     const button = screen.getByRole("button");
-    const button2 = screen.getByText("submit");
+    const button2 = screen.getByText("Submit");
 
     // 3. Assertion
     expect(button).toBeInTheDocument(); // checks button loaded on DOM
