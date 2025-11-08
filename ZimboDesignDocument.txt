@@ -71,4 +71,10 @@ Writing Test Cases :-
  
     command: npm run jest :- it runs test cases from Test files.
   
+
+ Writing Test cases for react components :-
+   // Install @babel/preset-react :- library helps testing library makes JSX work in our Test cases. i.e, converts JSX into Html
+   //  And include it in babel.config.js. ["@babel/preset-react", { runtime: "automatic" }]
+   // Install @testing-library/jest-dom :- it provides utility functions to test React Components.
+        render(), screen objects provides useful utility functions for testing our React Components.  
   
